@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<head>
+<title>Random</title>
+	<script src="jquery-3.2.1.min.js"></script>
+	<style>
+		.designBox{
+			width: 500px;
+			height: 200px;
+			background-color: #efefef;
+			font-size: 20px;
+			margin: 0 auto;
+			padding: 40px;
+		}
+		.w-100{
+			width: 100%;
+		}
+		.w-20{
+			width: 20%;
+		}
+		.blk{
+			display: block;
+		}
+		.dft-style{
+			height: 40px;
+			margin-bottom: 20px;
+		}
+		.center{
+			margin: 0 auto;
+			text-align: center;
+		}
+		input{
+			padding-left: 20px;
+		}
+		input[type=number]::-webkit-inner-spin-button, 
+		input[type=number]::-webkit-outer-spin-button { 
+			-webkit-appearance: none; 
+			margin: 0; 
+		}
+		button{
+			cursor: pointer;
+		}
+		.item{
+			border: 1px solid #efefef;
+			padding: 5px;
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			margin: 30px;
+			cursor: pointer;
+		}
+		.current{
+			background-color: red;
+		}
+		.prev{
+			background-color: green;
+		}
+		.next{
+			background-color: blue;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="designBox">
+		<p>Please enter the number of box:</p>
+		<input type="number" class="w-100 dft-style boxCount">
+		<div class="center">
+			<button class="dft-style w-20 btn submit">Box</button>
+			<button class="dft-style w-20 btn reset">Reset</button>
+		</div>
+	</div>
+
+	
+	<script>
+			$('.submit').click(function(){
+				//Box creation
+				let count = $('.boxCount').val();
+				for(var i=0; i< count; i++){
+					var btn = document.createElement("span");
+					btn.setAttribute('class','item');
+					btn.innerHTML = [i];
+					document.body.appendChild(btn); 
+					if([i] == 0){
+						btn.setAttribute('class','first item');
+					}
+					if([i] == count-1){
+						btn.setAttribute('class','last item');
+					}
+				}
+
+				//Item selection
+				$('.item').click(function(){
+					$('.item').removeClass('current prev next');
+					currentItem = $(this).addClass('current');
+					currentItem.prev().addClass('prev');
+					currentItem.next().addClass('next');
+					if([i] == count-1){
+						
+						$('.item').addClass('first')
+					}
+				});
+
+				//Last Item selection
+				$('.last').click(function(){
+					$('.first').addClass('next')
+				});
+				
+				//First Item selection
+				$('.first').click(function(){
+					$('.last').addClass('prev')
+				});
+				
+
+				//Disable the button
+				if(count == 0 || count == ''){
+					$('.submit').removeAttr('disabled','disabled');
+				}else{
+					$('.submit').attr('disabled','disabled');
+				}
+
+			});
+
+			//Reset Funtion
+			$('.reset').click(function(){
+				$('.submit').removeAttr('disabled','disabled');
+				$('.boxCount').val('');
+				$('.item').remove();
+			});
+
+			
+		
+	</script>
+</body>
+
+</html>

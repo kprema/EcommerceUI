@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+<title>Fibonnaci</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+	.fibo_box{
+		width: 300px;
+		background-color: #efefef;
+		font-size: 20px;
+		margin: 0 auto;
+		padding: 20px 40px 40px;
+	}
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+		-webkit-appearance: none; 
+		margin: 0; 
+	}
+	.inputBox{
+		padding: 5px 2%;
+		width: 94%;
+	}
+	.fiboBtn{
+		margin-top: 5%;
+		padding: 10px 20px;
+	}
+	.center{
+		text-align: center;
+	}
+	.output{
+		display: none;
+		font-size: 18px;
+		font-style: italic;
+	}
+</style>
+</head>
+
+<body>
+	<div class="fibo_box">
+		<p>Enter the limit for fibonaccis series</p>
+		<input type="number" class="inputBox">
+		<div class="center">
+			<button class="fiboBtn">Fibo</button>
+
+			<p class="output">Fibonnaci of <span class="count"> </span> is <span class="outputValue"></span></p>
+		</div>
+	</div>
+	
+	<script>
+			$('.fiboBtn').click(function(){
+				var count = $('.inputBox').val();
+				var step1 = 0;
+				var step2 = 1;
+				var output = [step1,step2];	
+				for(var a=1; a<count; a++){
+					var step3 = step1 + step2;
+					output.push(step3);
+					step1 =step2;
+					step2 =step3;
+					
+				}
+				$('.output').show();
+				$('.output .count').text(count);
+				$('.output .outputValue').text(output)
+			});
+		
+	</script>
+</body>
+
+</html>

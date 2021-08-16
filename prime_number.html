@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+<title>PrimeNumber</title>
+<script src="jquery-3.2.1.min.js"></script>
+<style>
+	.prime_box{
+		width: 300px;
+		background-color: #efefef;
+		font-size: 20px;
+		margin: 0 auto;
+		padding: 20px 40px 40px;
+	}
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+		-webkit-appearance: none; 
+		margin: 0; 
+	}
+	.inputBox{
+		padding: 5px 2%;
+		width: 94%;
+	}
+	.prime{
+		margin-top: 5%;
+		padding: 10px 20px;
+	}
+	.center{
+		text-align: center;
+	}
+	.output{
+		display: none;
+		font-size: 18px;
+		font-style: italic;
+	}
+</style>
+</head>
+
+<body>
+	<div class="prime_box">
+		<p>Enter the limit for PrimeNumber</p>
+
+		<input type="number" class="inputBox">
+		<div class="center">
+			<button class="prime">Prime</button>
+
+			<p class="output">Prime of <span class="count"> </span> is <span class="outputValue"></span></p>
+		</div>
+	</div>
+	
+	<script>
+			$('.prime').click(function(){
+				var count = $('.inputBox').val();
+				
+				for(a=1; a<=count; a++){
+					
+				}
+			});
+		
+	</script>
+</body>
+
+</html>

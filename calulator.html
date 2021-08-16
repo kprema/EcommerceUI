@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<head>
+	<title>Calculator</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style>
+		.designBox {
+			width: 300px;
+			background-color: #efefef;
+			font-size: 20px;
+			margin: 0 auto;
+			padding: 20px 40px 20px;
+		}
+
+		.btn,
+		.button {
+			background-color: #fff;
+			padding: 5px;
+			font-size: 14px;
+			text-align: center;
+			width: 50px;
+			height: 50px;
+			cursor: pointer;
+			margin-right: 20px;
+			margin-bottom: 20px;
+			border-radius: 6px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.btn:last-child {
+			margin-right: 0;
+		}
+
+		input[type=number]::-webkit-inner-spin-button,
+		input[type=number]::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+
+		.flex {
+			display: flex;
+		}
+
+		.blk {
+			display: block;
+			width: 100%;
+		}
+
+		.inputbox {
+			height: 45px;
+			padding-left: 2%;
+			border: 0;
+			margin-bottom: 5px;
+			width: 98%;
+		}
+
+		#error {
+			color: red;
+			margin-bottom: 20px;
+			font-size: 12px;
+			height: 20px;
+		}
+
+		h2 {
+			color: #333333;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="designBox">
+		<center><i>
+				<h2>Calculator</h2>
+			</i></center>
+		<input type="text" class="blk inputbox">
+		<div id="error"></div>
+		<div class="flex">
+			<span class="btn sym openBrace" value="(">(</span>
+			<span class="btn sym closeBrace" value=")">)</span>
+			<span class="btn sym modulo" value="%">%</span>
+			<span class="btn sym AC" value="AC">AC</span>
+		</div>
+		<div class="flex">
+			<span class="btn num" value="7">7</span>
+			<span class="btn num" value="8">8</span>
+			<span class="btn num" value="9">9</span>
+			<span class="btn sym divide" value="/">/</span>
+		</div>
+		<div class="flex">
+			<span class="btn num" value="4">4</span>
+			<span class="btn num" value="5">5</span>
+			<span class="btn num" value="6">6</span>
+			<span class="btn sym mul" value="*">*</span>
+		</div>
+		<div class="flex">
+			<span class="btn num" value="1">1</span>
+			<span class="btn num" value="2">2</span>
+			<span class="btn num" value="3">3</span>
+			<span class="btn sym minus" value="-">-</span>
+		</div>
+		<div class="flex">
+			<span class="btn num zero" value="0">0</span>
+			<span class="btn num dot" value=".">.</span>
+			<span class="btn num equal" value="=">=</span>
+			<span class="btn sym plus" value="+">+</span>
+		</div>
+	</div>
+
+
+	<script>
+		var value = '', inputTxt;
+		$('.btn:not(".AC"):not(".equal")').click(function () {
+			value = value + $(this).attr("value");
+			inputTxt = value;
+			$('.inputbox').val(inputTxt);
+
+		});
+
+		$(".AC").click(function () {
+			value = '0';
+			value = $(this).attr("value");
+			if (value == "AC") {
+				$('.inputbox').val('');
+			}
+			value = '';
+			$('#error').text('');
+		});
+
+
+		$(".equal").click(function () {
+			try {
+				var total = eval($('.inputbox').val());
+				eval($('.inputbox').val());
+				$('.inputbox').val(total);
+			}
+			catch (err) {
+				document.getElementById("error").innerHTML = "Please enter the proper expression";
+
+			}
+		});
+
+
+
+
+
+
+	</script>
+</body>
+
+</html>
